@@ -20,124 +20,553 @@
     --accent-light: #3a8060;
     --border: rgba(200,169,110,0.15);
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 5%; background: rgba(10,10,10,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.02em; text-decoration: none; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
   .nav-logo span { color: var(--white); font-style: italic; }
-  .nav-phone { display: flex; align-items: center; gap: 0.6rem; background: var(--gold); color: var(--black); font-weight: 600; font-size: 0.9rem; padding: 0.55rem 1.2rem; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
+
+  .nav-phone {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
   .nav-phone:hover { background: var(--gold-light); }
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 7rem 5% 4rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(200,169,110,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 80% at 20% 80%, rgba(42,96,73,0.12) 0%, transparent 60%), linear-gradient(160deg, #0a0a0a 0%, #111318 50%, #0e1410 100%); }
-  .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px); background-size: 60px 60px; }
-  .hero-content { position: relative; z-index: 2; max-width: 680px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 1.8rem; animation: fadeUp 0.6s ease both; }
-  .hero-badge::before { content: '●'; color: #4ade80; font-size: 0.5rem; animation: pulse 2s infinite; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 5% 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(200,169,110,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 20% 80%, rgba(42,96,73,0.12) 0%, transparent 60%),
+      linear-gradient(160deg, #0a0a0a 0%, #111318 50%, #0e1410 100%);
+  }
+
+  /* Grid lines texture */
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.3);
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '●';
+    color: #4ade80;
+    font-size: 0.5rem;
+    animation: pulse 2s infinite;
+  }
+
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1.4rem; animation: fadeUp 0.6s 0.1s ease both; }
-  h1 em { font-style: italic; color: var(--gold); }
-  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 500px; margin-bottom: 2.5rem; font-weight: 300; animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gold); color: var(--black); font-weight: 700; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 24px rgba(200,169,110,0.3); }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 24px rgba(200,169,110,0.3);
+  }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,169,110,0.4); }
-  .btn-secondary { display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: var(--white); font-weight: 500; font-size: 1rem; padding: 0.9rem 1.8rem; border-radius: 50px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: transparent;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.2s;
+  }
   .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-  .hero-stats { display: flex; gap: 2.5rem; margin-top: 4rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 4rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .stat { }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+  }
   .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SERVICES ─── */
   section { padding: 6rem 5%; }
-  .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
-  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; }
-  .section-sub { color: var(--muted); font-size: 1rem; max-width: 500px; font-weight: 300; margin-bottom: 3.5rem; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-  .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
-  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
   .service-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-4px); }
   .service-card:hover::before { opacity: 1; }
-  .service-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .service-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: 0.6rem; }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+  }
+
   .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
   #leistungen h2 { color: #8a7355; }
-  .booking-section { background: var(--black); position: relative; }
-  .booking-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 50% at 50% 0%, rgba(200,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
-  .booking-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; }
-  .booking-form { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
-  .form-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 1.8rem; color: var(--white); }
+
+  /* ─── BOOKING FORM ─── */
+  .booking-section {
+    background: var(--black);
+    position: relative;
+  }
+
+  .booking-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 50% at 50% 0%, rgba(200,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .booking-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .booking-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+    color: var(--white);
+  }
+
   .form-group { margin-bottom: 1.2rem; }
-  label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-  input, select, textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; padding: 0.8rem 1rem; outline: none; transition: border-color 0.2s; }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); background: rgba(200,169,110,0.04); }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    background: rgba(200,169,110,0.04);
+  }
+
   select option { background: var(--card); }
+
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .btn-book { width: 100%; background: var(--gold); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; padding: 1rem; border: none; border-radius: 10px; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; letter-spacing: 0.02em; }
+
+  .btn-book {
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
   .btn-book:hover { background: var(--gold-light); }
+
   .booking-info h2 { margin-bottom: 1rem; }
   .booking-info .section-sub { margin-bottom: 2rem; }
+
   .info-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-  .info-list li { display: flex; gap: 1rem; align-items: flex-start; color: var(--muted); font-size: 0.95rem; }
-  .info-list li span:first-child { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .info-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    color: var(--muted); font-size: 0.95rem;
+  }
+  .info-list li span:first-child {
+    color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem;
+  }
   .info-list strong { color: var(--white); display: block; margin-bottom: 0.1rem; }
-  .contact-cards { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2.5rem; }
-  .contact-card { display: flex; align-items: center; gap: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; text-decoration: none; color: var(--white); transition: all 0.2s; font-size: 0.95rem; }
+
+  .contact-cards {
+    display: flex; flex-direction: column; gap: 0.8rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-card {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
   .contact-card:hover { border-color: var(--gold); color: var(--gold); }
   .contact-card .ci { font-size: 1.3rem; }
   .contact-card strong { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 400; margin-bottom: 0.1rem; }
+
+  /* ─── WHY US ─── */
   .why-section { background: var(--dark); }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-  .why-card { text-align: center; padding: 2rem 1.5rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card); transition: transform 0.3s; }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .why-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: transform 0.3s;
+  }
   .why-card:hover { transform: translateY(-4px); }
   .why-icon { font-size: 2.2rem; margin-bottom: 1rem; }
   .why-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
   .why-card p { font-size: 0.85rem; color: var(--muted); }
+
+  /* ─── TESTIMONIALS ─── */
   .reviews-section { background: var(--black); }
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-  .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+  }
+
   .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
   .review-text { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
   .reviewer { display: flex; align-items: center; gap: 0.8rem; }
-  .reviewer-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: var(--black); }
+  .reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; color: var(--black);
+  }
   .reviewer-name { font-weight: 600; font-size: 0.9rem; }
   .reviewer-since { font-size: 0.75rem; color: var(--muted); }
+
+  /* ─── COVERAGE ─── */
   .coverage-section { background: var(--dark); }
-  .coverage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; margin-top: 2rem; }
-  .coverage-tag { display: flex; align-items: center; gap: 0.6rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 0.8rem 1.1rem; font-size: 0.85rem; color: var(--muted); transition: all 0.2s; }
+
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .coverage-tag {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.8rem 1.1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
   .coverage-tag:hover { border-color: var(--gold); color: var(--white); }
   .coverage-tag span { color: var(--gold); }
-  .airports-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; padding: 2.5rem 5%; background: rgba(200,169,110,0.05); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .airport-tag { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--muted); }
+
+  /* ─── AIRPORTS ─── */
+  .airports-bar {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;
+    padding: 2.5rem 5%;
+    background: rgba(200,169,110,0.05);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .airport-tag {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
   .airport-tag strong { color: var(--gold); font-size: 1rem; }
-  .cta-band { background: linear-gradient(135deg, var(--accent) 0%, #1a4a35 100%); padding: 4rem 5%; text-align: center; position: relative; overflow: hidden; }
-  .cta-band::before { content: '🚖'; position: absolute; font-size: 15rem; right: -2rem; top: 50%; transform: translateY(-50%); opacity: 0.06; }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--accent) 0%, #1a4a35 100%);
+    padding: 4rem 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '🚖';
+    position: absolute;
+    font-size: 15rem;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.06;
+  }
   .cta-band h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.8rem; }
   .cta-band p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; font-size: 1rem; }
   .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  footer { background: var(--black); padding: 3rem 5% 2rem; border-top: 1px solid var(--border); }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    padding: 3rem 5% 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
   .footer-brand .nav-logo { display: block; margin-bottom: 0.8rem; font-size: 1.3rem; }
   .footer-brand p { color: var(--muted); font-size: 0.85rem; max-width: 280px; line-height: 1.7; }
+
   .footer-col h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
   .footer-col li { font-size: 0.85rem; color: var(--muted); }
   .footer-col a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-col a:hover { color: var(--white); }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; gap: 1rem; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { color: var(--muted); text-decoration: none; }
   .footer-links a:hover { color: var(--white); }
-  .wa-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; background: #25d366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5); transition: transform 0.2s; }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
+    background: #25d366;
+    color: white;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    transition: transform 0.2s;
+  }
   .wa-float:hover { transform: scale(1.1); }
-  @media (max-width: 768px) { .booking-wrapper { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; gap: 2rem; } .hero-stats { gap: 1.5rem; } nav .nav-phone span.phone-text { display: none; } }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .booking-wrapper { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    nav .nav-phone span.phone-text { display: none; }
+  }
 </style>
 </head>
 <body>
 
+<!-- ─── NAV ─── -->
 <nav>
   <a class="nav-logo" href="#">Comfort<span>Ride</span></a>
-  <a class="nav-phone" href="tel:+4915756403359">📞 <span class="phone-text">+49 157 5640 3359</span></a>
+  <a class="nav-phone" href="tel:+4915756403359">
+    📞 <span class="phone-text">+49 157 5640 3359</span><span style="display:none" class="mobile-text">Anrufen</span>
+  </a>
 </nav>
 
+<!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -149,13 +578,23 @@
       <a class="btn-secondary" href="tel:+4915756403359">📞 Direkt anrufen</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Verfügbar</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Flughäfen</div></div>
-      <div class="stat"><div class="stat-num">★ 5.0</div><div class="stat-label">Kundenbewertung</div></div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Verfügbar</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Flughäfen</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">★ 5.0</div>
+        <div class="stat-label">Kundenbewertung</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ─── AIRPORTS BAR ─── -->
 <div class="airports-bar">
   <div class="airport-tag">✈️ <div><strong>FRA</strong> Frankfurt</div></div>
   <div class="airport-tag">✈️ <div><strong>HHN</strong> Hahn</div></div>
@@ -165,20 +604,46 @@
   <div class="airport-tag">🎉 <div><strong>Events</strong> & Messen</div></div>
 </div>
 
+<!-- ─── SERVICES ─── -->
 <section id="leistungen">
   <div class="section-label">Was wir bieten</div>
   <h2>Unsere Leistungen</h2>
   <p class="section-sub">Vom Flughafentransfer bis zur Krankenfahrt — wir sind Ihr verlässlicher Partner in der Rhein-Main-Region.</p>
   <div class="services-grid">
-    <div class="service-card"><span class="service-icon">✈️</span><h3>Flughafentransfer</h3><p>Pünktlicher Transfer zu FRA, HHN und Köln/Bonn. Wir verfolgen Ihren Flug — kein Stress bei Verspätungen.</p></div>
-    <div class="service-card"><span class="service-icon">🏥</span><h3>Krankenfahrten</h3><p>Zuverlässige Fahrten zu Dialyse, Reha, Chemotherapie und Arztbesuchen. Diskret, pünktlich und fürsorglich.</p></div>
-    <div class="service-card"><span class="service-icon">💼</span><h3>Business-Fahrten</h3><p>Professioneller Fahrservice für Geschäftsreisende im Rhein-Main-Gebiet. Sauber, pünktlich, diskret.</p></div>
-    <div class="service-card"><span class="service-icon">📦</span><h3>Kurier & Sonderfahrten</h3><p>Kurzfristige Sonder- und Kurierfahrten in Wiesbaden, Mainz, Frankfurt und Umgebung.</p></div>
-    <div class="service-card"><span class="service-icon">🎉</span><h3>Event & Messen</h3><p>Fahrten zu Messen, Veranstaltungen und Feiern. Auch für Gruppen im Voraus buchbar.</p></div>
-    <div class="service-card"><span class="service-icon">🌙</span><h3>Nachtfahrten</h3><p>Sicher nach Hause — auch nachts und an Wochenenden. Kein Aufpreis für Nacht- und Wochenendfahrten*.</p></div>
+    <div class="service-card">
+      <span class="service-icon">✈️</span>
+      <h3>Flughafentransfer</h3>
+      <p>Pünktlicher Transfer zu FRA, HHN und Köln/Bonn. Wir verfolgen Ihren Flug — kein Stress bei Verspätungen.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏥</span>
+      <h3>Krankenfahrten</h3>
+      <p>Zuverlässige Fahrten zu Dialyse, Reha, Chemotherapie und Arztbesuchen. Diskret, pünktlich und fürsorglich.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💼</span>
+      <h3>Business-Fahrten</h3>
+      <p>Professioneller Fahrservice für Geschäftsreisende im Rhein-Main-Gebiet. Sauber, pünktlich, diskret.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📦</span>
+      <h3>Kurier & Sonderfahrten</h3>
+      <p>Kurzfristige Sonder- und Kurierfahrten in Wiesbaden, Mainz, Frankfurt und Umgebung.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎉</span>
+      <h3>Event & Messen</h3>
+      <p>Fahrten zu Messen, Veranstaltungen und Feiern. Auch für Gruppen im Voraus buchbar.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌙</span>
+      <h3>Nachtfahrten</h3>
+      <p>Sicher nach Hause — auch nachts und an Wochenenden. Kein Aufpreis für Nacht- und Wochenendfahrten*.</p>
+    </div>
   </div>
 </section>
 
+<!-- ─── BOOKING ─── -->
 <section id="buchen" class="booking-section">
   <div class="booking-wrapper">
     <div class="booking-info">
@@ -186,62 +651,137 @@
       <h2>Fahrt jetzt anfragen</h2>
       <p class="section-sub">Füllen Sie das Formular aus — wir melden uns innerhalb weniger Minuten mit einer Bestätigung.</p>
       <ul class="info-list">
-        <li><span>⚡</span><div><strong>Schnelle Antwort</strong>In der Regel antworten wir innerhalb von 10 Minuten.</div></li>
-        <li><span>💰</span><div><strong>Fairer Festpreis</strong>Kein Taxameter-Risiko — wir nennen Ihnen vorab den Preis.</div></li>
-        <li><span>🔄</span><div><strong>Kostenlose Stornierung</strong>Bis 2 Stunden vor Fahrtbeginn kostenlos stornierbar.</div></li>
+        <li>
+          <span>⚡</span>
+          <div><strong>Schnelle Antwort</strong>In der Regel antworten wir innerhalb von 10 Minuten.</div>
+        </li>
+        <li>
+          <span>💰</span>
+          <div><strong>Fairer Festpreis</strong>Kein Taxameter-Risiko — wir nennen Ihnen vorab den Preis.</div>
+        </li>
+        <li>
+          <span>🔄</span>
+          <div><strong>Kostenlose Stornierung</strong>Bis 2 Stunden vor Fahrtbeginn kostenlos stornierbar.</div>
+        </li>
       </ul>
       <div class="contact-cards">
-        <a class="contact-card" href="tel:+4915756403359"><span class="ci">📞</span><div><strong>Telefon / 24h</strong>+49 157 5640 3359</div></a>
-        <a class="contact-card" href="https://wa.me/4915756403359" target="_blank"><span class="ci">💬</span><div><strong>WhatsApp</strong>Jetzt chatten</div></a>
+        <a class="contact-card" href="tel:+4915756403359">
+          <span class="ci">📞</span>
+          <div><strong>Telefon / 24h</strong>+49 157 5640 3359</div>
+        </a>
+        <a class="contact-card" href="https://wa.me/4915756403359" target="_blank">
+          <span class="ci">💬</span>
+          <div><strong>WhatsApp</strong>Jetzt chatten</div>
+        </a>
       </div>
     </div>
+
     <div class="booking-form">
       <div class="form-title">🚖 Fahrt anfragen</div>
-      <div class="form-group"><label>Ihr Name</label><input type="text" placeholder="Max Mustermann"></div>
-      <div class="form-row">
-        <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+49 ..."></div>
-        <div class="form-group"><label>Fahrttyp</label><select><option>Flughafentransfer</option><option>Krankenfahrt</option><option>Business-Fahrt</option><option>Sonderfahrt / Kurier</option><option>Sonstiges</option></select></div>
+      <div class="form-group">
+        <label>Ihr Name</label>
+        <input type="text" placeholder="Max Mustermann">
       </div>
-      <div class="form-group"><label>Abholadresse</label><input type="text" placeholder="Straße, Hausnummer, Stadt"></div>
-      <div class="form-group"><label>Zieladresse / Flughafen</label><input type="text" placeholder="z.B. Frankfurt Flughafen T1"></div>
       <div class="form-row">
-        <div class="form-group"><label>Datum</label><input type="date"></div>
-        <div class="form-group"><label>Uhrzeit</label><input type="time"></div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+49 ...">
+        </div>
+        <div class="form-group">
+          <label>Fahrttyp</label>
+          <select>
+            <option>Flughafentransfer</option>
+            <option>Krankenfahrt</option>
+            <option>Business / Chauffeur</option>
+            <option>Sonderfahrt / Kurier</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group"><label>Anmerkungen (optional)</label><textarea rows="2" placeholder="z.B. Rollstuhl, viel Gepäck, Flugnummer..."></textarea></div>
+      <div class="form-group">
+        <label>Abholadresse</label>
+        <input type="text" placeholder="Straße, Hausnummer, Stadt">
+      </div>
+      <div class="form-group">
+        <label>Zieladresse / Flughafen</label>
+        <input type="text" placeholder="z.B. Frankfurt Flughafen T1">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Datum</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Uhrzeit</label>
+          <input type="time">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Anmerkungen (optional)</label>
+        <textarea rows="2" placeholder="z.B. Rollstuhl, viel Gepäck, Flugnummer..."></textarea>
+      </div>
       <button class="btn-book" onclick="handleBooking()">Anfrage senden →</button>
       <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;text-align:center;">Oder direkt anrufen: <a href="tel:+4915756403359" style="color:var(--gold)">+49 157 5640 3359</a></p>
     </div>
   </div>
 </section>
 
+<!-- ─── WHY US ─── -->
 <section class="why-section">
   <div style="text-align:center;max-width:600px;margin:0 auto 3rem;">
     <div class="section-label">Warum Comfort Ride?</div>
     <h2>Zuverlässigkeit, die Sie verdienen</h2>
   </div>
   <div class="why-grid">
-    <div class="why-card"><div class="why-icon">⏰</div><h3>Immer pünktlich</h3><p>Pünktlichkeit ist für uns keine Option, sondern eine Selbstverständlichkeit — bei jeder Fahrt.</p></div>
-    <div class="why-card"><div class="why-icon">🚗</div><h3>Saubere Fahrzeuge</h3><p>Gepflegte, klimatisierte Fahrzeuge für Ihren Komfort.</p></div>
-    <div class="why-card"><div class="why-icon">💬</div><h3>Mehrsprachig</h3><p>Wir sprechen Deutsch, Englisch und Urdu — für internationale Gäste.</p></div>
-    <div class="why-card"><div class="why-icon">💳</div><h3>Alle Zahlungsmittel</h3><p>Bar, EC, Kreditkarte, Überweisung oder FreeNow — wie es Ihnen passt.</p></div>
-    <div class="why-card"><div class="why-icon">📍</div><h3>Echtzeit-Tracking</h3><p>Wir verfolgen Ihren Flug live und passen die Abholzeit automatisch an.</p></div>
-    <div class="why-card"><div class="why-icon">🔒</div><h3>Versichert & lizenziert</h3><p>Offiziell zugelassenes Taxiunternehmen mit vollem Versicherungsschutz.</p></div>
+    <div class="why-card">
+      <div class="why-icon">⏰</div>
+      <h3>Immer pünktlich</h3>
+      <p>Pünktlichkeit ist für uns keine Option, sondern eine Selbstverständlichkeit — bei jeder Fahrt.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🚗</div>
+      <h3>Saubere Fahrzeuge</h3>
+      <p>Gepflegte, klimatisierte Fahrzeuge für Ihren Komfort.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💬</div>
+      <h3>Mehrsprachig</h3>
+      <p>Wir sprechen Deutsch, Englisch und Urdu — für internationale Gäste.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💳</div>
+      <h3>Alle Zahlungsmittel</h3>
+      <p>Bar, EC, Kreditkarte, Überweisung oder FreeNow — wie es Ihnen passt.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <h3>Echtzeit-Tracking</h3>
+      <p>Wir verfolgen Ihren Flug live und passen die Abholzeit automatisch an.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Versichert & lizenziert</h3>
+      <p>Offiziell zugelassenes Taxiunternehmen mit vollem Versicherungsschutz.</p>
+    </div>
   </div>
 </section>
 
+<!-- ─── REVIEWS ─── -->
 <section class="reviews-section">
   <div class="section-label">Kundenstimmen</div>
   <h2>Was unsere Kunden sagen</h2>
   <p class="section-sub">Echte Bewertungen von echten Kunden.</p>
-  <div class="reviews-grid">
-    <div class="review-card" style="border-style:dashed;opacity:0.5;display:flex;align-items:center;justify-content:center;min-height:180px;"><p style="color:var(--muted);font-size:0.85rem;text-align:center;">✏️ Hier kommt Ihre erste Kundenbewertung hin</p></div>
-    <div class="review-card" style="border-style:dashed;opacity:0.5;display:flex;align-items:center;justify-content:center;min-height:180px;"><p style="color:var(--muted);font-size:0.85rem;text-align:center;">✏️ Hier kommt Ihre zweite Kundenbewertung hin</p></div>
-    <div class="review-card" style="border-style:dashed;opacity:0.5;display:flex;align-items:center;justify-content:center;min-height:180px;"><p style="color:var(--muted);font-size:0.85rem;text-align:center;">✏️ Hier kommt Ihre dritte Kundenbewertung hin</p></div>
+  <div style="text-align:center;max-width:500px;margin:0 auto;">
+    <div style="font-size:2.5rem;color:var(--gold);margin-bottom:1.2rem;letter-spacing:0.1em;">★★★★★</div>
+    <p style="color:var(--muted);font-size:0.95rem;margin-bottom:2rem;">Waren Sie zufrieden mit unserer Fahrt? Teilen Sie Ihre Erfahrung auf Google — es dauert nur 30 Sekunden und hilft uns sehr!</p>
+    <a href="https://g.page/r/CYP1o9uABmRBEAE/review" target="_blank" class="btn-primary" style="font-size:1rem;padding:1rem 2.5rem;display:inline-flex;">
+      ⭐ Jetzt auf Google bewerten
+    </a>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;">Öffnet Google Maps in einem neuen Tab</p>
   </div>
-  <p style="text-align:center;margin-top:2rem;color:var(--muted);font-size:0.85rem;">⭐ Bewerten Sie uns auf <a href="#" style="color:var(--gold)">Google Maps</a></p>
 </section>
 
+<!-- ─── COVERAGE ─── -->
 <section class="coverage-section">
   <div class="section-label">Einsatzgebiet</div>
   <h2>Wir fahren überall hin</h2>
@@ -262,6 +802,7 @@
   </div>
 </section>
 
+<!-- ─── CTA BAND ─── -->
 <div class="cta-band">
   <h2>Jetzt Fahrt buchen</h2>
   <p>Rund um die Uhr erreichbar — auch kurzfristig und spontan</p>
@@ -271,6 +812,7 @@
   </div>
 </div>
 
+<!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -279,30 +821,48 @@
     </div>
     <div class="footer-col">
       <h4>Leistungen</h4>
-      <ul><li>Flughafentransfer</li><li>Krankenfahrten</li><li>Business-Fahrten</li><li>Kurier & Sonderfahrten</li><li>Nachtfahrten</li></ul>
+      <ul>
+        <li>Flughafentransfer</li>
+        <li>Krankenfahrten</li>
+        <li>Business-Fahrten</li>
+        <li>Kurier & Sonderfahrten</li>
+        <li>Nachtfahrten</li>
+      </ul>
     </div>
     <div class="footer-col">
       <h4>Kontakt</h4>
-      <ul><li><a href="tel:+4915756403359">+49 157 5640 3359</a></li><li><a href="https://wa.me/4915756403359">WhatsApp</a></li><li>Wiesbaden, Deutschland</li></ul>
+      <ul>
+        <li><a href="tel:+4915756403359">+49 157 5640 3359</a></li>
+        <li><a href="https://wa.me/4915756403359">WhatsApp</a></li>
+        <li>Wiesbaden, Deutschland</li>
+      </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 Comfort Ride Taxi Wiesbaden</span>
-    <div class="footer-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/4915756403359" target="_blank">💬</a>
-
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/4915756403359" target="_blank" title="WhatsApp">💬</a>
 
 <script>
 function handleBooking() {
   const name = document.querySelector('input[placeholder="Max Mustermann"]').value;
   const phone = document.querySelector('input[type="tel"]').value;
-  if (!name || !phone) { alert('Bitte Name und Telefonnummer ausfüllen.'); return; }
+  if (!name || !phone) {
+    alert('Bitte Name und Telefonnummer ausfüllen.');
+    return;
+  }
+  // In production: send to backend or WhatsApp
   const msg = encodeURIComponent(`Hallo, ich möchte eine Fahrt buchen.\nName: ${name}\nTelefon: ${phone}`);
   window.open(`https://wa.me/4915756403359?text=${msg}`, '_blank');
 }
 </script>
+
 </body>
 </html>
